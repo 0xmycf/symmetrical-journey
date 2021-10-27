@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "org.mycf.symmetricaljourney.mixins",
+  "package": "org.mycf.symmetrical.journey.mixins",
   "compatibilityLevel": "JAVA_16",
   "injectors": {
     "defaultRequire": 1

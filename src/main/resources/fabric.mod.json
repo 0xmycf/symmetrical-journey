@@ -19,12 +19,12 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "org.mycf.symmetricaljourney.SymmetricalJourney"
+        "value": "org.mycf.symmetrical.journey.SymmetricalJourney"
       }
     ]
   },
   "mixins": [
-    "symmetricaljourney.mixins.json"
+    "symmetrical-journey.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.7",
