@@ -1,5 +1,5 @@
 plugins {
-    id("fabric-loom")
+    id("fabric-loom") version "0.10-SNAPSHOT" // 0.10-SNAPSHOT/
     val kotlinVersion: String by System.getProperties()
     kotlin("jvm").version(kotlinVersion)
 }

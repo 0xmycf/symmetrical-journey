@@ -23,17 +23,20 @@
       }
     ],
     "client": [
-      "org.mycf.symmetrical.journey.client.SymmetricalClient"
+      {
+        "adapter": "kotlin",
+        "value": "org.mycf.symmetrical.journey.client.SymmetricalClient"
+      }
     ]
   },
   "mixins": [
     "symmetrical-journey.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.7",
+    "fabricloader": ">=0.12.3",
     "fabric": "*",
     "fabric-language-kotlin": ">=1.6.5+kotlin.1.5.31",
-    "minecraft": "1.17.x",
+    "minecraft": "1.18-alpha.21.43.a",
     "java": ">=16"
   }
 }
