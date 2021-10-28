@@ -21,6 +21,9 @@
         "adapter": "kotlin",
         "value": "org.mycf.symmetrical.journey.SymmetricalJourney"
       }
+    ],
+    "client": [
+      "org.mycf.symmetrical.journey.client.SymmetricalClient"
     ]
   },
   "mixins": [

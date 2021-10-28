@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import org.mycf.symmetrical.journey.SymmetricalJourney
 
-object SymmetricalJourneyItems {
+object SymmetricalItems {
     private var ItemRegistry = linkedMapOf<String, Item>()
 
     init {

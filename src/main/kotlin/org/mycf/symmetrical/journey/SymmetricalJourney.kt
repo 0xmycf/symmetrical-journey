@@ -1,8 +1,8 @@
 package org.mycf.symmetrical.journey
 
 import net.fabricmc.api.ModInitializer
-import org.mycf.symmetrical.journey.blocks.SymmetricalJourneyBlocks
-import org.mycf.symmetrical.journey.items.SymmetricalJourneyItems
+import org.mycf.symmetrical.journey.blocks.SymmetricalBlocks
+import org.mycf.symmetrical.journey.items.SymmetricalItems
 
 
 @Suppress("UNUSED")
@@ -12,7 +12,7 @@ object SymmetricalJourney: ModInitializer {
 
 
     override fun onInitialize() {
-        SymmetricalJourneyBlocks.registerBlocks()
-        SymmetricalJourneyItems.registerItems()
+        SymmetricalBlocks.registerBlocks()
+        SymmetricalItems.registerItems()
     }
 }
