@@ -5,5 +5,11 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": []
+  "mixins": [
+    "MixinCropBlock",
+    "MixinItemEntry",
+    "MixinLootContext",
+    "MixinLootPool",
+    "MixinLootTable"
+  ]
 }
