@@ -13,12 +13,13 @@ object SymmetricalItems {
     private var ItemRegistry = linkedMapOf<String, Item>()
 
     init {
-        addItem("coolitem", Item(FabricItemSettings().maxCount(64).group(ItemGroup.MISC)))
+//        addItem("coolitem", Item(FabricItemSettings().maxCount(64).group(ItemGroup.MISC)))
     }
 
-    private fun addItem(name: String, item: Item) {
+    private fun addItem(name: String, item: Item): Item {
         val correctedName = name.lowercase().trim()
         ItemRegistry[correctedName] = item
+        return item
     }
 
     public fun registerItems() {

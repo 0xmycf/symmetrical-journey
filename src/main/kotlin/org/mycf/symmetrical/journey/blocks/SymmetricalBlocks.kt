@@ -17,10 +17,10 @@ object SymmetricalBlocks {
     private var BlockItemsRegistry = linkedMapOf<String, Item>()
     private var BlockRegistry = linkedMapOf<String, Block>()
 
-    val COOL_BLOCK: Block
+//    val COOL_BLOCK: Block
 
     init {
-        COOL_BLOCK = addBlock("coolblock", PointedDripstoneBlock(FabricBlockSettings.of(Material.STONE).ticksRandomly().dynamicBounds()))
+//        COOL_BLOCK = addBlock("coolblock", PointedDripstoneBlock(FabricBlockSettings.of(Material.STONE).ticksRandomly().dynamicBounds()))
     }
 
     private fun addBlock(name: String, block: Block): Block {
