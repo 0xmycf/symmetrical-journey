@@ -3,10 +3,13 @@ package org.mycf.symmetrical.journey.entities.goals;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropBlock;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.passive.ParrotEntity;
+import net.minecraft.entity.passive.SnowGolemEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
@@ -15,6 +18,7 @@ import org.mycf.symmetrical.journey.static_maps.CropBlocks;
 
 public class EatSeedsGoal extends MoveToTargetPosGoal {
     protected int timer;
+    private static final TargetPredicate CLOSE_GOLEM_PREDICATE = TargetPredicate.createNonAttackable().setBaseMaxDistance(6.0D);
 
     public EatSeedsGoal(PathAwareEntity entity, double d, int i, int j) {
         super(entity, d, i, j);
@@ -26,6 +30,10 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
 
     public boolean shouldResetPath() {
         return this.tryingTime % 100 == 0;
+    }
+
+    public boolean canStart() {
+        return !this.mob.isSleeping() && super.canStart() && noPumpkinNearby() && noGolemNearby() && !((ParrotEntity)this.mob).isTamed();
     }
 
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
@@ -68,10 +76,6 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
         }
     }
 
-    public boolean canStart() {
-        return !this.mob.isSleeping() && super.canStart() && noPumpkinNearby();
-    }
-
     public void start() {
         this.timer = 0;
         ((ParrotEntity) this.mob).setSitting(false);
@@ -85,11 +89,9 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
 
     private boolean noPumpkinNearby() {
         var pos = this.targetPos;
-        System.out.println("targetPos = " + targetPos);
 
         if (this.mob instanceof ParrotEntity) {
             for (var blockPos : BlockPos.iterate(pos.add(-10, -6, -10), pos.add(10, 6, 10))) {
-                System.out.println(this.mob.getWorld().getBlockState(blockPos).isOf(Blocks.CARVED_PUMPKIN));
                 if (this.mob.getWorld().getBlockState(blockPos).isOf(Blocks.CARVED_PUMPKIN)) {
                     return false;
                 }
@@ -97,4 +99,12 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
         }
         return true;
     }
+
+    private boolean noGolemNearby() {
+        LivingEntity golemEntity = this.mob.world.getClosestEntity(GolemEntity.class, CLOSE_GOLEM_PREDICATE, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand(10.0D, 5.0D, 10.0D));
+        LivingEntity snowGolemEntity = this.mob.world.getClosestEntity(SnowGolemEntity.class, CLOSE_GOLEM_PREDICATE, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand(10.0D, 5.0D, 10.0D));
+        return golemEntity == null && snowGolemEntity == null;
+
+    }
+
 }
