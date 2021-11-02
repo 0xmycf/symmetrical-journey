@@ -1,15 +1,10 @@
 package org.mycf.symmetrical.journey.mixins;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Flutterer;
-import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.passive.ParrotEntity;
-import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableShoulderEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
-import org.mycf.symmetrical.journey.entities.EatSeedsGoal;
+import org.mycf.symmetrical.journey.entities.goals.EatSeedsGoal;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

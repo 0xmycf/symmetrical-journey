@@ -2,10 +2,8 @@ package org.mycf.symmetrical.journey.mixins;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CropBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
-import org.mycf.symmetrical.journey.SymmetricalJourney;
 import org.mycf.symmetrical.journey.static_maps.CropBlocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
