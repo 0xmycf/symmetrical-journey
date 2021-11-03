@@ -39,7 +39,8 @@ public class MixinLootTable {
     )
     private void processStacksDifferently(Args args, LootContext context, Consumer<ItemStack> lootConsumer) {
         var ctx = ((MixinLootContext) (context)).getParams();
-        if (CONFIGURED_ENTITIES.containsKey(((Entity) ctx.get(LootContextParameters.THIS_ENTITY)).getType())) {
+        var key = ((Entity) ctx.get(LootContextParameters.THIS_ENTITY));
+        if (key != null && CONFIGURED_ENTITIES.containsKey(key.getType())) {
             args.set(0, processStacksCorrectly(lootConsumer, context));
         }
     }

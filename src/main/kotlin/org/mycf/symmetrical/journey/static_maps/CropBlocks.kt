@@ -10,7 +10,7 @@ class CropBlocks {
         /**
          * Blocks that are specified in here won't drop any items
          */
-        val CONFIGURED_BLOCKSSTATES = listOf<BlockState>(
+        val CONFIGURED_BLOCKSSTATES = setOf<BlockState>(
             Blocks.WHEAT.defaultState,
             Blocks.WHEAT.defaultState.with(CropBlock.AGE, 1),
             Blocks.WHEAT.defaultState.with(CropBlock.AGE, 2),

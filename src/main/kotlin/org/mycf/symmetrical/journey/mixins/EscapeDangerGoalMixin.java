@@ -8,10 +8,13 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.SnowGolemEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import org.mycf.symmetrical.journey.entities.goals.EatSeedsGoal;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -19,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EscapeDangerGoal.class)
 public abstract class EscapeDangerGoalMixin {
 
+    @Unique
     private static final TargetPredicate CLOSE_GOLEM_PREDICATE = TargetPredicate.createNonAttackable().setBaseMaxDistance(6.0D);
 
 
@@ -44,11 +48,17 @@ public abstract class EscapeDangerGoalMixin {
         }
     }
 
-    private boolean noGolemNearby() {
+
+    @SuppressWarnings("DuplicatedCode")
+    public boolean noGolemNearby() {
         LivingEntity golemEntity = this.mob.world.getClosestEntity(GolemEntity.class, CLOSE_GOLEM_PREDICATE, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand(10.0D, 5.0D, 10.0D));
         LivingEntity snowGolemEntity = this.mob.world.getClosestEntity(SnowGolemEntity.class, CLOSE_GOLEM_PREDICATE, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand(10.0D, 5.0D, 10.0D));
+        PlayerEntity player = this.mob.world.getClosestPlayer(CLOSE_GOLEM_PREDICATE, this.mob);
+        if (player != null) {
+            boolean playerHasPumpkin = player.getInventory().armor.get(3).isOf(Blocks.CARVED_PUMPKIN.asItem());
+            return golemEntity == null && snowGolemEntity == null && !playerHasPumpkin;
+        }
         return golemEntity == null && snowGolemEntity == null;
-
     }
 }
 

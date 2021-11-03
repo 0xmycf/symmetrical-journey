@@ -9,6 +9,7 @@
     "EscapeDangerGoalMixin",
     "MixinAbstractBlock",
     "MixinCropBlock",
+    "MixinFishEntity",
     "MixinLootContext",
     "MixinLootTable",
     "MixinParrotEntity"

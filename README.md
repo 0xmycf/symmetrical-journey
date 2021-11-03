@@ -11,7 +11,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 # Roadmap
 
 - [x] Cows, Pigs, Sheep, Rabbits etc. drop meat only and only if killed with an anvil
-- [ ] Cows, Pigs fight back when attacked
+- [ ] Cows, Pigs fight back when attacked (how... pls tell me)
 - [ ] Rabbits go into sonic mode if attacked
 - [x] Sheep die when attacked (vanilla behaviour) 
 - [x] Wheat, Potatoes, Carrots etc. all grow significantly faster
@@ -20,7 +20,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] Parrots fear CarvedPumpkins and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear IronGolems and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear SnowGolems and won't eat Wheat, Potatoes, Carrots if nearby
-- [ ] Parrots fear Players with CarvedPumpkins as Head and won't eat Wheat, Potatoes, Carrots if nearby
+- [x] Parrots fear Players with CarvedPumpkins as Head and won't eat Wheat, Potatoes, Carrots if nearby (should work not tested)
 - [ ] Fish only spawn if its raining
 - [ ] Somehow make fish more complicated (haven't figured that out yet)
 - [ ] Furnaces, Smokers etc. are dangerous if used with food
