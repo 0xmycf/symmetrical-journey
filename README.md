@@ -21,7 +21,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] Parrots fear IronGolems and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear SnowGolems and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear Players with CarvedPumpkins as Head and won't eat Wheat, Potatoes, Carrots if nearby (should work not tested)
-- [ ] Fish only spawn if its raining
+- [x] Fish only spawn if its raining
 - [ ] Somehow make fish more complicated (haven't figured that out yet)
 - [ ] Furnaces, Smokers etc. are dangerous if used with food
 - [ ] Somehow deal with Villager trades
