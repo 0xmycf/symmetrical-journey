@@ -14,7 +14,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.WorldView;
-import org.mycf.symmetrical.journey.static_maps.CropBlocks;
+import org.mycf.symmetrical.journey.static_collections.CropBlocks;
 
 public class EatSeedsGoal extends MoveToTargetPosGoal {
     protected int timer;

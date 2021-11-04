@@ -4,7 +4,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
-import org.mycf.symmetrical.journey.static_maps.CropBlocks;
+import org.mycf.symmetrical.journey.static_collections.CropBlocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

@@ -1,4 +1,4 @@
-package org.mycf.symmetrical.journey.static_maps
+package org.mycf.symmetrical.journey.static_collections
 
 import net.minecraft.block.BeetrootsBlock
 import net.minecraft.block.BlockState
