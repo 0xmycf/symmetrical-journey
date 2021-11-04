@@ -8,6 +8,7 @@
   "mixins": [
     "EscapeDangerGoalMixin",
     "MixinAbstractBlock",
+    "MixinCowEntity",
     "MixinCropBlock",
     "MixinFishEntity",
     "MixinLootContext",

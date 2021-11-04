@@ -67,8 +67,6 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
 
     private void pickSeed(BlockState state) {
         if (!(state.getBlock() == Blocks.BEETROOTS)) {
-//            state.with(CropBlock.AGE, 1);
-
             this.mob.playSound(SoundEvents.ENTITY_PARROT_EAT, 1.0F, 1.0F);
             this.mob.world.breakBlock(this.targetPos, false);
         }

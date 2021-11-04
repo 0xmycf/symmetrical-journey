@@ -6,24 +6,21 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
-import net.minecraft.tag.ItemTags;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.HashMap;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
 @Mixin(LootTable.class)
 public class MixinLootTable {
+    @Unique
     @SuppressWarnings("rawtypes")
     private static final HashMap<EntityType, Item> CONFIGURED_ENTITIES = new HashMap<>() {{
         put(EntityType.COW, Items.BEEF);
@@ -48,7 +45,7 @@ public class MixinLootTable {
     private static Consumer<ItemStack> processStacksCorrectly(Consumer<ItemStack> lootConsumer, LootContext context) {
         return (stack) -> {
             if (!CONFIGURED_ENTITIES.containsValue(stack.getItem())
-                    || ((MixinLootContext)(context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL) {
+                    || ((MixinLootContext) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL) {
                 if (stack.getCount() < stack.getMaxCount()) {
                     lootConsumer.accept(stack);
                 } else {

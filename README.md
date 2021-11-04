@@ -11,12 +11,13 @@ It will *not* add new Items, Blocks, Biomes etc.
 # Roadmap
 
 - [x] Cows, Pigs, Sheep, Rabbits etc. drop meat only and only if killed with an anvil
-- [ ] Cows, Pigs fight back when attacked (how... pls tell me)
+- [x] Cows fight back when attacked (needs optimization)
+- [ ] Pigs fight back when attacked
 - [ ] Rabbits go into sonic mode if attacked
 - [x] Sheep die when attacked (vanilla behaviour) 
 - [x] Wheat, Potatoes, Carrots etc. all grow significantly faster
 - [x] Wheat, Potatoes, Carrots etc. only drop items at their last stage
-  - [x] Wheat, Potatoes, Carrots get eaten by parrots
+- [x] Wheat, Potatoes, Carrots get eaten by parrots
 - [x] Parrots fear CarvedPumpkins and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear IronGolems and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear SnowGolems and won't eat Wheat, Potatoes, Carrots if nearby
