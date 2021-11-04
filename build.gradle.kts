@@ -1,42 +1,52 @@
 plugins {
-    id("fabric-loom") version "0.10-SNAPSHOT" // 0.10-SNAPSHOT/
+    id("fabric-loom") version "0.10-SNAPSHOT"
     val kotlinVersion: String by System.getProperties()
-    kotlin("jvm").version(kotlinVersion)
+    kotlin("jvm") version kotlinVersion
 }
 base {
     val archivesBaseName: String by project
     archivesName.set(archivesBaseName)
 }
+
+val javaVersion = JavaVersion.VERSION_16.toString()
 val modVersion: String by project
-version = modVersion
 val mavenGroup: String by project
+val minecraftVersion: String by project
+val yarnMappings: String by project
+val loaderVersion: String by project
+val fabricVersion: String by project
+val fabricKotlinVersion: String by project
+
+version = modVersion
 group = mavenGroup
+
 minecraft {}
 repositories {}
+
 dependencies {
-    val minecraftVersion: String by project
+
     minecraft("com.mojang:minecraft:$minecraftVersion")
-    val yarnMappings: String by project
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
-    val loaderVersion: String by project
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
-    val fabricVersion: String by project
+
+    // FAPI
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion")
-    val fabricKotlinVersion: String by project
+
+    // Kotlin Language Adapter
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
 }
+
 tasks {
-    val javaVersion = JavaVersion.VERSION_16
     withType<JavaCompile> {
         options.encoding = "UTF-8"
-        sourceCompatibility = javaVersion.toString()
-        targetCompatibility = javaVersion.toString()
-        options.release.set(javaVersion.toString().toInt())
+        targetCompatibility = javaVersion
+        sourceCompatibility = javaVersion
+        options.release.set(javaVersion.toInt())
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions { jvmTarget = javaVersion.toString() }
-        sourceCompatibility = javaVersion.toString()
-        targetCompatibility = javaVersion.toString()
+        kotlinOptions { jvmTarget = javaVersion }
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
     jar { from("LICENSE") { rename { "${it}_${base.archivesName}" } } }
     processResources {
@@ -44,9 +54,9 @@ tasks {
         filesMatching("fabric.mod.json") { expand("version" to project.version) }
     }
     java {
-        toolchain { languageVersion.set(JavaLanguageVersion.of(javaVersion.toString())) }
-        sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
+        toolchain { languageVersion.set(JavaLanguageVersion.of(javaVersion)) }
+        sourceCompatibility = JavaVersion.VERSION_16
+        targetCompatibility = JavaVersion.VERSION_16
         withSourcesJar()
     }
 }

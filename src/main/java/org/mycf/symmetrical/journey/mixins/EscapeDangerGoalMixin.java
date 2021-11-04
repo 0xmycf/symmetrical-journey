@@ -61,8 +61,3 @@ public abstract class EscapeDangerGoalMixin {
         return golemEntity == null && snowGolemEntity == null;
     }
 }
-
-/*
-Hey there!
-How would I go about checking if a certain entity is nearby another entity?
- */
