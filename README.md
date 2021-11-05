@@ -12,7 +12,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 
 - [x] Cows, Pigs, Sheep, Rabbits etc. drop meat only and only if killed with an anvil
 - [x] Cows fight back when attacked (needs optimization)
-- [ ] Pigs fight back when attacked
+- [x] Pigs fight back when attacked (needs optimization)
 - [ ] Rabbits go into sonic mode if attacked
 - [x] Sheep die when attacked (vanilla behaviour) 
 - [x] Wheat, Potatoes, Carrots etc. all grow significantly faster
