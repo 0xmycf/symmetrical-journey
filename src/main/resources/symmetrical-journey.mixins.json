@@ -6,14 +6,17 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "EscapeDangerGoalMixin",
+    "CropBlockInvoker",
     "MixinAbstractBlock",
     "MixinCowEntity",
     "MixinCropBlock",
+    "MixinEscapeDangerGoal",
     "MixinFishEntity",
     "MixinLootContext",
     "MixinLootTable",
     "MixinParrotEntity",
-    "MixinPigEntity"
+    "MixinPigEntity",
+    "MixinRabbitEntity",
+    "MixinStemBlock"
   ]
 }

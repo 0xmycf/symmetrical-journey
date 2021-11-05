@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EscapeDangerGoal.class)
-public abstract class EscapeDangerGoalMixin {
+public abstract class MixinEscapeDangerGoal {
 
     @Unique
     private static final TargetPredicate CLOSE_GOLEM_PREDICATE = TargetPredicate.createNonAttackable().setBaseMaxDistance(6.0D);
