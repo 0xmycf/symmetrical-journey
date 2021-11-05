@@ -40,7 +40,5 @@ public class MixinStemBlock extends PlantBlock {
         if (random.nextInt((int) (100f / f) + 1) == 0) {
             args.set(0, 1);
         }
-
     }
-
 }

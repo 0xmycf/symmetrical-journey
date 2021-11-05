@@ -96,7 +96,9 @@ public abstract class MixinCowEntity extends AnimalEntity implements Angerable {
 
     @Inject(method = "createCowAttributes", at = @At(value = "TAIL"))
     private static void addAttackDamage(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.getReturnValue().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2);
+        cir.getReturnValue()
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2)
+                .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 3);
     }
 
     static {

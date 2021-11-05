@@ -9,6 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
+import org.mycf.symmetrical.journey.static_collections.ModifiedLoot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,19 +17,14 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Mixin(LootTable.class)
 public class MixinLootTable {
-    @Unique
-    @SuppressWarnings("rawtypes")
-    private static final HashMap<EntityType, Item> CONFIGURED_ENTITIES = new HashMap<>() {{
-        put(EntityType.COW, Items.BEEF);
-        put(EntityType.SHEEP, Items.MUTTON);
-        put(EntityType.PIG, Items.PORKCHOP);
-        put(EntityType.CHICKEN, Items.CHICKEN);
-        put(EntityType.RABBIT, Items.RABBIT);
-    }};
+
 
     @ModifyArgs(
             method = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContext;Ljava/util/function/Consumer;)V",
@@ -37,14 +33,14 @@ public class MixinLootTable {
     private void processStacksDifferently(Args args, LootContext context, Consumer<ItemStack> lootConsumer) {
         var ctx = ((MixinLootContext) (context)).getParams();
         var key = ((Entity) ctx.get(LootContextParameters.THIS_ENTITY));
-        if (key != null && CONFIGURED_ENTITIES.containsKey(key.getType())) {
+        if (key != null && ModifiedLoot.Companion.getCONFIGURED_MOB_LOOT().containsKey(key.getType())) {
             args.set(0, processStacksCorrectly(lootConsumer, context));
         }
     }
 
     private static Consumer<ItemStack> processStacksCorrectly(Consumer<ItemStack> lootConsumer, LootContext context) {
         return (stack) -> {
-            if (!CONFIGURED_ENTITIES.containsValue(stack.getItem())
+            if (!ModifiedLoot.Companion.isItemIncluded(stack)
                     || ((MixinLootContext) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL) {
                 if (stack.getCount() < stack.getMaxCount()) {
                     lootConsumer.accept(stack);
@@ -63,12 +59,3 @@ public class MixinLootTable {
     }
 
 }
-
-
-
-
-
-
-
-
-
