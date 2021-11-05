@@ -16,7 +16,6 @@ import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import org.mycf.symmetrical.journey.ducks.CowDuck;
 import org.mycf.symmetrical.journey.entities.goals.CowAttackGoal;
 import org.mycf.symmetrical.journey.entities.goals.CowMeleeAttackGoal;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.UUID;
 
 @Mixin(CowEntity.class)
-public abstract class MixinCowEntity extends AnimalEntity implements CowDuck, Angerable {
+public abstract class MixinCowEntity extends AnimalEntity implements Angerable {
 
     @Unique
     private int angerTime;
@@ -94,12 +93,6 @@ public abstract class MixinCowEntity extends AnimalEntity implements CowDuck, An
     public void chooseRandomAngerTime() {
         this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
     }
-
-    @Override
-    public boolean shouldAnger(LivingEntity entity) {
-        return this.shouldAngerAt(entity);
-    }
-
 
     @Inject(method = "createCowAttributes", at = @At(value = "TAIL"))
     private static void addAttackDamage(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
