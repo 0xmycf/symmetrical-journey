@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.TameableShoulderEntity;
 import net.minecraft.world.World;
-import org.mycf.symmetrical.journey.entities.goals.EatSeedsGoal;
+import org.mycf.symmetrical.journey.entities.goals.cow.EatSeedsGoal;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

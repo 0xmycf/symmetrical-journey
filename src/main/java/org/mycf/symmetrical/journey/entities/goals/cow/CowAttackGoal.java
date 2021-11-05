@@ -1,4 +1,4 @@
-package org.mycf.symmetrical.journey.entities.goals;
+package org.mycf.symmetrical.journey.entities.goals.cow;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;

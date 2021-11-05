@@ -13,6 +13,7 @@
     "MixinFishEntity",
     "MixinLootContext",
     "MixinLootTable",
-    "MixinParrotEntity"
+    "MixinParrotEntity",
+    "MixinPigEntity"
   ]
 }
