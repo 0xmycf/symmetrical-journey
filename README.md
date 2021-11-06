@@ -23,6 +23,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] Parrots fear SnowGolems and won't eat Wheat, Potatoes, Carrots if nearby
 - [x] Parrots fear Players with CarvedPumpkins as Head and won't eat Wheat, Potatoes, Carrots if nearby (should work not tested)
 - [x] Fish only spawn if its raining
+- [x] Fish only drop themselves when killed with an FishingRod
 - [ ] Might make FishingRod enchantable with Sharpness
 - [x] Furnaces, Smokers etc. are dangerous if used with food
 - [ ] Somehow deal with Villager trades

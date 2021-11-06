@@ -3,24 +3,20 @@ package org.mycf.symmetrical.journey.mixins;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.util.Hand;
 import org.mycf.symmetrical.journey.static_collections.ModifiedLoot;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 @Mixin(LootTable.class)
 public class MixinLootTable {
@@ -41,7 +37,11 @@ public class MixinLootTable {
     private static Consumer<ItemStack> processStacksCorrectly(Consumer<ItemStack> lootConsumer, LootContext context) {
         return (stack) -> {
             if (!ModifiedLoot.Companion.isItemIncluded(stack)
-                    || ((MixinLootContext) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL) {
+                    || ((MixinLootContext) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL
+                    || (((MixinLootContext) (context)).getParams().get(LootContextParameters.KILLER_ENTITY) instanceof PlayerEntity
+                    && ((PlayerEntity) ((MixinLootContext) (context)).getParams().get(LootContextParameters.KILLER_ENTITY)).getStackInHand(Hand.MAIN_HAND).getItem() == Items.FISHING_ROD
+                        && (((Entity) ((MixinLootContext) (context)).getParams().get(LootContextParameters.THIS_ENTITY)).getType() == EntityType.COD
+                            || ((Entity) ((MixinLootContext) (context)).getParams().get(LootContextParameters.THIS_ENTITY)).getType() == EntityType.SALMON))) {
                 if (stack.getCount() < stack.getMaxCount()) {
                     lootConsumer.accept(stack);
                 } else {
