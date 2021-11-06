@@ -13,9 +13,12 @@ class ModifiedLoot {
             EntityType.PIG to setOf(Items.PORKCHOP, Items.COOKED_PORKCHOP),
             EntityType.CHICKEN to setOf(Items.CHICKEN, Items.COOKED_CHICKEN),
             EntityType.RABBIT to setOf(Items.RABBIT, Items.COOKED_RABBIT),
+            EntityType.COD to setOf(Items.COD, Items.COOKED_COD),
+            EntityType.SALMON to setOf(Items.SALMON, Items.COOKED_SALMON),
         )
 
-        fun isItemIncluded(stack: ItemStack): Boolean = CONFIGURED_MOB_LOOT.values.flatten().contains(stack.item)
+        fun isItemIncluded(stack: ItemStack): Boolean = isItemIncluded(stack.item)
+        fun isItemIncluded(item: Item): Boolean = CONFIGURED_MOB_LOOT.values.flatten().contains(item)
         // wtf java
         // ModifiedLoot.Companion.getCONFIGURED_MOB_LOOT().values().stream().flatMap(Set::stream).collect(Collectors.toList()).contains(stack.getItem())
     }

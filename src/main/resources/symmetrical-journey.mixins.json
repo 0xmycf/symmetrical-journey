@@ -6,8 +6,10 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "AbstractFurnaceBlockEntityAccessor",
     "CropBlockInvoker",
     "MixinAbstractBlock",
+    "MixinAbstractFurnaceBlockEntity",
     "MixinCowEntity",
     "MixinCropBlock",
     "MixinEscapeDangerGoal",
