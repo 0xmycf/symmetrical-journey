@@ -8,10 +8,12 @@
   "mixins": [
     "AbstractFurnaceBlockEntityAccessor",
     "CropBlockInvoker",
+    "MixinEnchantmentHelper",
     "MixinAbstractBlock",
     "MixinAbstractFurnaceBlockEntity",
     "MixinCowEntity",
     "MixinCropBlock",
+    "MixinDamageEnchantment",
     "MixinEscapeDangerGoal",
     "MixinFishEntity",
     "MixinLootContext",

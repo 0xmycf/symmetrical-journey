@@ -24,7 +24,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] Parrots fear Players with CarvedPumpkins as Head and won't eat Wheat, Potatoes, Carrots if nearby (should work not tested)
 - [x] Fish only spawn if its raining
 - [x] Fish only drop themselves when killed with an FishingRod
-- [ ] Might make FishingRod enchantable with Sharpness
+- [x] FishingRod is enchantable with Sharpness (by Book and by EnchantingTable)
 - [x] Furnaces, Smokers etc. are dangerous if used with food
 - [ ] Somehow deal with Villager trades
 - [ ] Somehow deal with fishing (haven't figured that out yet)
