@@ -16,6 +16,8 @@
     "MixinEnchantmentHelper",
     "MixinEscapeDangerGoal",
     "MixinFishEntity",
+    "MixinFishingRodItem",
+    "MixinFletchingTableBlock",
     "MixinLootContext",
     "MixinLootTable",
     "MixinParrotEntity",

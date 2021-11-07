@@ -15,7 +15,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] Pigs fight back when attacked (needs optimization)
 - [x] Rabbits go into sonic mode if attacked (needs optimization/balancing)
 - [x] Sheep die when attacked (vanilla behaviour) 
-- [x] Wheat, Potatoes, Carrots etc. all grow significantly faster
+- [x] Wheat, Potatoes, Carrots etc. all grow significantly slower
 - [x] Wheat, Potatoes, Carrots etc. only drop items at their last stage
 - [x] Wheat, Potatoes, Carrots get eaten by parrots
 - [x] Parrots fear CarvedPumpkins and won't eat Wheat, Potatoes, Carrots if nearby
