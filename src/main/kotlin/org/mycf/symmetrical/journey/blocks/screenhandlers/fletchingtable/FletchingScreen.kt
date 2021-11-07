@@ -2,6 +2,7 @@ package org.mycf.symmetrical.journey.blocks.screenhandlers.fletchingtable
 
 import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.gui.screen.ingame.HandledScreen
+import net.minecraft.client.render.GameRenderer
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text
@@ -12,19 +13,18 @@ class FletchingScreen(screenHandler: FletchingBlockScreenHandler?, playerInvento
         screenHandler, playerInventory, title) {
 
     companion object {
+        // something is wrong with this but idk what, and frankly idc atm :sadge: :>-===-<:
         private val TEXTURE: Identifier = Identifier("minecraft", "textures/gui/container/anvil.png")
     }
 
-    @Override
     override fun drawBackground(matrices: MatrixStack?, delta: Float, mouseX: Int, mouseY: Int) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F)
-        client?.textureManager?.bindTexture(TEXTURE)
+        RenderSystem.setShader { GameRenderer.getPositionTexShader() }
+        RenderSystem.setShaderTexture(0, TEXTURE)
         val x = (width - backgroundWidth) / 2;
         val y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
     }
 
-    @Override
     override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
