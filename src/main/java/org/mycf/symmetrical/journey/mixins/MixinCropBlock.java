@@ -19,7 +19,7 @@ public abstract class MixinCropBlock {
 
     @Shadow
     protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {
-        return 1;
+        throw new AssertionError("Tried to invoke shadowed method");
     }
 
     @Shadow protected abstract int getAge(BlockState state);

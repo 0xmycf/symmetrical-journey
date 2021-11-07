@@ -1,4 +1,4 @@
-package org.mycf.symmetrical.journey.entities.goals.cow;
+package org.mycf.symmetrical.journey.entities.goals.parrot;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

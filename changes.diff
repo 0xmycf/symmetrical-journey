@@ -1,0 +1,123 @@
+diff --git a/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigAttackGoal.java b/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigAttackGoal.java
+index f754b56..9c3d059 100644
+--- a/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigAttackGoal.java
++++ b/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigAttackGoal.java
+@@ -2,7 +2,6 @@ package org.mycf.symmetrical.journey.entities.goals.pig;
+ 
+ import net.minecraft.entity.LivingEntity;
+ import net.minecraft.entity.ai.goal.ActiveTargetGoal;
+-import net.minecraft.entity.passive.CowEntity;
+ import net.minecraft.entity.passive.PigEntity;
+ import net.minecraft.entity.player.PlayerEntity;
+ import org.jetbrains.annotations.Nullable;
+diff --git a/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigMeleeAttackGoal.java b/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigMeleeAttackGoal.java
+index 0d85c29..f42321a 100644
+--- a/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigMeleeAttackGoal.java
++++ b/src/main/java/org/mycf/symmetrical/journey/entities/goals/pig/PigMeleeAttackGoal.java
+@@ -1,7 +1,6 @@
+ package org.mycf.symmetrical.journey.entities.goals.pig;
+ 
+ import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+-import net.minecraft.entity.passive.CowEntity;
+ import net.minecraft.entity.passive.PigEntity;
+ 
+ public class PigMeleeAttackGoal extends MeleeAttackGoal {
+diff --git a/src/main/java/org/mycf/symmetrical/journey/mixins/AbstractFurnaceBlockEntityAccessor.java b/src/main/java/org/mycf/symmetrical/journey/mixins/AbstractFurnaceBlockEntityAccessor.java
+index 63ef9a6..d8a761f 100644
+--- a/src/main/java/org/mycf/symmetrical/journey/mixins/AbstractFurnaceBlockEntityAccessor.java
++++ b/src/main/java/org/mycf/symmetrical/journey/mixins/AbstractFurnaceBlockEntityAccessor.java
+@@ -1,6 +1,5 @@
+ package org.mycf.symmetrical.journey.mixins;
+ 
+-import net.minecraft.block.AbstractBlock;
+ import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
+ import net.minecraft.item.ItemStack;
+ import net.minecraft.util.collection.DefaultedList;
+diff --git a/src/main/java/org/mycf/symmetrical/journey/mixins/MixinAbstractFurnaceBlockEntity.java b/src/main/java/org/mycf/symmetrical/journey/mixins/MixinAbstractFurnaceBlockEntity.java
+index 0729437..c41d1ce 100644
+--- a/src/main/java/org/mycf/symmetrical/journey/mixins/MixinAbstractFurnaceBlockEntity.java
++++ b/src/main/java/org/mycf/symmetrical/journey/mixins/MixinAbstractFurnaceBlockEntity.java
+@@ -4,22 +4,17 @@ import net.minecraft.block.AbstractFireBlock;
+ import net.minecraft.block.BlockState;
+ import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
+ import net.minecraft.item.ItemStack;
+-import net.minecraft.tag.BlockTags;
+ import net.minecraft.tag.ItemTags;
+-import net.minecraft.util.collection.DefaultedList;
+ import net.minecraft.util.math.BlockPos;
+ import net.minecraft.util.math.Direction;
+ import net.minecraft.world.GameRules;
+ import net.minecraft.world.World;
+ import org.mycf.symmetrical.journey.static_collections.ModifiedLoot;
+ import org.spongepowered.asm.mixin.Mixin;
+-import org.spongepowered.asm.mixin.gen.Accessor;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Inject;
+ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+ 
+-import java.util.Random;
+-
+ @Mixin(AbstractFurnaceBlockEntity.class)
+ public abstract class MixinAbstractFurnaceBlockEntity {
+ 
+@@ -27,10 +22,10 @@ public abstract class MixinAbstractFurnaceBlockEntity {
+             at = @At(value = "INVOKE", target = "Lnet/minecraft/block/entity/AbstractFurnaceBlockEntity;setLastRecipe(Lnet/minecraft/recipe/Recipe;)V",
+                     shift = At.Shift.AFTER))
+     private static void mightBurnYourHouse(World world, BlockPos pos, BlockState state, AbstractFurnaceBlockEntity blockEntity, CallbackInfo ci) {
+-        final var input = (ItemStack) ((AbstractFurnaceBlockEntityAccessor)blockEntity).getInventory().get(0);
+-        if ((ModifiedLoot.Companion.isItemIncluded(input) || input.isIn(ItemTags.FISHES))  && world.getGameRules().getBoolean(GameRules.DO_FIRE_TICK)) {
++        final var input = (ItemStack) ((AbstractFurnaceBlockEntityAccessor) blockEntity).getInventory().get(0);
++        if ((ModifiedLoot.Companion.isItemIncluded(input) || input.isIn(ItemTags.FISHES)) && world.getGameRules().getBoolean(GameRules.DO_FIRE_TICK)) {
+             if (world.random.nextFloat() > 0.8) {
+-                for (var blockPos : BlockPos.iterateOutwards(pos, 3, 2, 3)){
++                for (var blockPos : BlockPos.iterateOutwards(pos, 3, 2, 3)) {
+                     for (var direction : Direction.values()) {
+                         var offset = blockPos.offset(direction);
+                         if (world.getBlockState(blockPos).getMaterial().isBurnable()
+diff --git a/src/main/java/org/mycf/symmetrical/journey/mixins/MixinCropBlock.java b/src/main/java/org/mycf/symmetrical/journey/mixins/MixinCropBlock.java
+index c73824e..94716dd 100644
+--- a/src/main/java/org/mycf/symmetrical/journey/mixins/MixinCropBlock.java
++++ b/src/main/java/org/mycf/symmetrical/journey/mixins/MixinCropBlock.java
+@@ -19,7 +19,7 @@ public abstract class MixinCropBlock {
+ 
+     @Shadow
+     protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {
+-        return 1;
++        throw new AssertionError("Tried to invoke shadowed method");
+     }
+ 
+     @Shadow protected abstract int getAge(BlockState state);
+diff --git a/src/main/java/org/mycf/symmetrical/journey/mixins/MixinFishEntity.java b/src/main/java/org/mycf/symmetrical/journey/mixins/MixinFishEntity.java
+index 2929003..44d3b8a 100644
+--- a/src/main/java/org/mycf/symmetrical/journey/mixins/MixinFishEntity.java
++++ b/src/main/java/org/mycf/symmetrical/journey/mixins/MixinFishEntity.java
+@@ -1,11 +1,9 @@
+ package org.mycf.symmetrical.journey.mixins;
+ 
+ import net.minecraft.entity.EntityType;
+-import net.minecraft.entity.SpawnReason;
+ import net.minecraft.entity.mob.WaterCreatureEntity;
+ import net.minecraft.entity.passive.FishEntity;
+ import net.minecraft.world.World;
+-import net.minecraft.world.WorldAccess;
+ import net.minecraft.world.WorldView;
+ import org.spongepowered.asm.mixin.Mixin;
+ 
+diff --git a/src/main/resources/symmetrical-journey.mixins.json b/src/main/resources/symmetrical-journey.mixins.json
+index 1c0e10f..6d46d8b 100644
+--- a/src/main/resources/symmetrical-journey.mixins.json
++++ b/src/main/resources/symmetrical-journey.mixins.json
+@@ -8,12 +8,12 @@
+   "mixins": [
+     "AbstractFurnaceBlockEntityAccessor",
+     "CropBlockInvoker",
+-    "MixinEnchantmentHelper",
+     "MixinAbstractBlock",
+     "MixinAbstractFurnaceBlockEntity",
+     "MixinCowEntity",
+     "MixinCropBlock",
+     "MixinDamageEnchantment",
++    "MixinEnchantmentHelper",
+     "MixinEscapeDangerGoal",
+     "MixinFishEntity",
+     "MixinLootContext",
