@@ -36,6 +36,7 @@ class FletchingBlockScreenHandler(
         if (!this.input.getStack(1).isEmpty){
             this.input.getStack(1).decrement(1)
         }
+        // sound might need adjustment
         player?.world?.playSound(player, player.x, player.y, player.z, SoundEvents.ENTITY_VILLAGER_WORK_FLETCHER, SoundCategory.NEUTRAL, 0.5F, 0.4F / (player.world.getRandom().nextFloat() * 0.4F + 0.8F));
     }
 

@@ -30,7 +30,7 @@ public class MixinFishingRodItem extends Item {
     @Inject(method = "Lnet/minecraft/item/FishingRodItem;use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/FishingBobberEntity;use(Lnet/minecraft/item/ItemStack;)I", shift = At.Shift.AFTER))
     private void mightBreakLine(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
-        if (world.getRandom().nextFloat() > 0.75) {
+        if (world.getRandom().nextFloat() > 0.97) {
             world.playSound((PlayerEntity) null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_CROSSBOW_SHOOT, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
             user.getStackInHand(hand).getOrCreateNbt().putBoolean(SymmetricalJourney.symmjour_brokenLine, true);
         }

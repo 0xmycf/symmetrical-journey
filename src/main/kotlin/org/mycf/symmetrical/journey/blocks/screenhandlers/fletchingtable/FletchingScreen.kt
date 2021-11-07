@@ -13,8 +13,7 @@ class FletchingScreen(screenHandler: FletchingBlockScreenHandler?, playerInvento
         screenHandler, playerInventory, title) {
 
     companion object {
-        // something is wrong with this but idk what, and frankly idc atm :sadge: :>-===-<:
-        private val TEXTURE: Identifier = Identifier("minecraft", "textures/gui/container/anvil.png")
+        private val TEXTURE: Identifier = Identifier("symmetricaljourney", "textures/gui/container/fletching_table.png")
     }
 
     override fun drawBackground(matrices: MatrixStack?, delta: Float, mouseX: Int, mouseY: Int) {
