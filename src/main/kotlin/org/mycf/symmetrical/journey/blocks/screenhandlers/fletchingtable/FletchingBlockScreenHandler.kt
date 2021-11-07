@@ -1,4 +1,3 @@
-// constructor(screenHandlerType: ScreenHandlerType<*>?, i:Int) : this(screenHandlerType, i, ScreenHandlerContext.EMPTY)
 package org.mycf.symmetrical.journey.blocks.screenhandlers.fletchingtable
 
 import net.minecraft.block.BlockState

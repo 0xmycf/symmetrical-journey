@@ -27,7 +27,9 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] FishingRod is enchantable with Sharpness (by Book and by EnchantingTable)
 - [x] Furnaces, Smokers etc. are dangerous if used with food
 - [ ] Somehow deal with Villager trades
-- [ ] Somehow deal with fishing (haven't figured that out yet)
+- [x] Somehow deal with fishing (probably not done)
+- [x] The FishingRod now has a 3% chance to break after being used (meaning its line "breaks")
+- [x] The FishingRod can be repaired using a string on the FletchingTable
 - [ ] Somehow deal with mushroom stew
 - [ ] Somehow reward better food (stews for example, golden carrots)
 

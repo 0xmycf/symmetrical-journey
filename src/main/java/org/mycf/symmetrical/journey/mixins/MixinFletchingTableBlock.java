@@ -7,6 +7,7 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -36,6 +37,6 @@ public class MixinFletchingTableBlock {
     public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimpleNamedScreenHandlerFactory((syncId, inventory, player) -> {
             return new FletchingBlockScreenHandler(inventory, syncId, ScreenHandlerContext.create(world, pos));
-        }, new LiteralText("Some Cool Text Here"));
+        }, new TranslatableText("symmetricaljourney.gui.fletchingtable.header"));
     }
 }
