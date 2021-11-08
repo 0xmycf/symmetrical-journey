@@ -331,3 +331,8 @@ classes/
 # macos
 
 *.DS_Store
+
+# other
+*.diff
+*.patch
+*.sh
