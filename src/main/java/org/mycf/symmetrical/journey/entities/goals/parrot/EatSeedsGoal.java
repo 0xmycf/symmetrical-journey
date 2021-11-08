@@ -2,25 +2,19 @@ package org.mycf.symmetrical.journey.entities.goals.parrot;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
-import net.minecraft.entity.mob.PathAwareEntity;
-import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.passive.ParrotEntity;
-import net.minecraft.entity.passive.SnowGolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.WorldView;
 import org.mycf.symmetrical.journey.static_collections.CropBlocks;
+import org.mycf.symmetrical.journey.util.UtilFunctions;
 
 public class EatSeedsGoal extends MoveToTargetPosGoal {
     protected int timer;
-    private static final TargetPredicate CLOSE_GOLEM_PREDICATE = TargetPredicate.createNonAttackable().setBaseMaxDistance(10.0D);
 
-    public EatSeedsGoal(PathAwareEntity entity, double d, int i, int j) {
+    public EatSeedsGoal(ParrotEntity entity, double d, int i, int j) {
         super(entity, d, i, j);
     }
 
@@ -33,7 +27,7 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
     }
 
     public boolean canStart() {
-        return !this.mob.isSleeping() && super.canStart() && noPumpkinNearby() && noGolemNearby() && !((ParrotEntity) this.mob).isTamed();
+        return !this.mob.isSleeping() && super.canStart() && noPumpkinNearby() && UtilFunctions.INSTANCE.noGolemNearby((ParrotEntity) this.mob, this.targetPos) && !((ParrotEntity) this.mob).isTamed();
     }
 
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
@@ -94,17 +88,5 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
             }
         }
         return true;
-    }
-
-    @SuppressWarnings("DuplicatedCode")
-    public boolean noGolemNearby() {
-        LivingEntity golemEntity = this.mob.world.getClosestEntity(GolemEntity.class, CLOSE_GOLEM_PREDICATE, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand(10.0D, 5.0D, 10.0D));
-        LivingEntity snowGolemEntity = this.mob.world.getClosestEntity(SnowGolemEntity.class, CLOSE_GOLEM_PREDICATE, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand(10.0D, 5.0D, 10.0D));
-        PlayerEntity player = this.mob.world.getClosestPlayer(CLOSE_GOLEM_PREDICATE, this.mob);
-        if (player != null) {
-            boolean playerHasPumpkin = player.getInventory().armor.get(3).isOf(Blocks.CARVED_PUMPKIN.asItem());
-            return golemEntity == null && snowGolemEntity == null && !playerHasPumpkin;
-        }
-        return golemEntity == null && snowGolemEntity == null;
     }
 }
