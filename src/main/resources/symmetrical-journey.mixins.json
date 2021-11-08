@@ -20,6 +20,7 @@
     "MixinFletchingTableBlock",
     "MixinLootContext",
     "MixinLootTable",
+    "MixinMooshroomEntity",
     "MixinParrotEntity",
     "MixinPigEntity",
     "MixinRabbitEntity",

@@ -30,7 +30,7 @@ It will *not* add new Items, Blocks, Biomes etc.
 - [x] Somehow deal with fishing (probably not done)
 - [x] The FishingRod line now has a 3% chance to break after being used (meaning its line "breaks")
 - [x] The FishingRod line can be repaired using a string on the FletchingTable
-- [ ] Somehow deal with mushroom stew
+- [x] Mooshrooms now attack when using their stew
 - [ ] Somehow reward better food (stews for example, golden carrots)
 
 # Licence
