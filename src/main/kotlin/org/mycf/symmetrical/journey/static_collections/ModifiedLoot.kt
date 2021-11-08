@@ -9,6 +9,7 @@ class ModifiedLoot {
     companion object {
         val CONFIGURED_MOB_LOOT: HashMap<EntityType<*>, Set<Item>> = hashMapOf(
             EntityType.COW to setOf(Items.BEEF, Items.COOKED_BEEF),
+            EntityType.MOOSHROOM to setOf(Items.BEEF, Items.COOKED_BEEF),
             EntityType.SHEEP to setOf(Items.MUTTON, Items.COOKED_MUTTON),
             EntityType.PIG to setOf(Items.PORKCHOP, Items.COOKED_PORKCHOP),
             EntityType.CHICKEN to setOf(Items.CHICKEN, Items.COOKED_CHICKEN),

@@ -9,6 +9,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
@@ -55,9 +56,9 @@ public class MixinFishingRodItem extends Item {
         }
 
         if (stack.getOrCreateNbt().getBoolean(SymmetricalJourney.symmjour_brokenLine)) {
-            tooltip.add(new LiteralText("Your line is broken, please repair it using an ..."));
+            tooltip.add(new TranslatableText("symmetricaljourney.rod.broken"));
         } else {
-            tooltip.add(new LiteralText("Your line is fine!"));
+            tooltip.add(new TranslatableText("symmetricaljourney.rod.fine"));
         }
 
         super.appendTooltip(stack, world, tooltip, context);

@@ -31,11 +31,11 @@ import java.util.UUID;
 public abstract class MixinCowEntity extends AnimalEntity implements Angerable {
 
     @Unique
-    private int angerTime;
+    private int symmjour$angerTime;
     @Unique
-    private UUID targetUuid;
+    private UUID symmjour$targetUuid;
     @Unique
-    private static final UniformIntProvider ANGER_TIME_RANGE;
+    private static final UniformIntProvider symmjour$ANGER_TIME_RANGE;
 
 
     protected MixinCowEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -70,38 +70,38 @@ public abstract class MixinCowEntity extends AnimalEntity implements Angerable {
 
     @Override
     public int getAngerTime() {
-        return this.angerTime;
+        return this.symmjour$angerTime;
     }
 
     @Override
     public void setAngerTime(int ticks) {
-        this.angerTime = ticks;
+        this.symmjour$angerTime = ticks;
     }
 
     @Nullable
     @Override
     public UUID getAngryAt() {
-        return this.targetUuid;
+        return this.symmjour$targetUuid;
     }
 
     @Override
     public void setAngryAt(@Nullable UUID uuid) {
-        this.targetUuid = uuid;
+        this.symmjour$targetUuid = uuid;
     }
 
     @Override
     public void chooseRandomAngerTime() {
-        this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
+        this.setAngerTime(symmjour$ANGER_TIME_RANGE.get(this.random));
     }
 
     @Inject(method = "createCowAttributes", at = @At(value = "TAIL"))
     private static void addAttackDamage(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
         cir.getReturnValue()
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6)
                 .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 3);
     }
 
     static {
-        ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
+        symmjour$ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
     }
 }

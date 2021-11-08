@@ -1,3 +1,5 @@
 {
-  "symmetricaljourney.gui.fletchingtable.header": "Fletching Table"
+  "symmetricaljourney.gui.fletchingtable.header": "Fletching Table",
+  "symmetricaljourney.rod.broken":"Your line is broken, please repair it on a Fletching Table",
+  "symmetricaljourney.rod.fine": "Your line is fine!"
 }

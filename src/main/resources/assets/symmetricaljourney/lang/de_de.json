@@ -1,3 +1,5 @@
 {
-  "symmetricaljourney.gui.fletchingtable.header": "Bognertisch"
+  "symmetricaljourney.gui.fletchingtable.header": "Bognertisch",
+  "symmetricaljourney.rod.broken":"Deine Leine ist gerissen, repariere sie an einem Bognertisch!",
+  "symmetricaljourney.rod.fine": "Profiangel ist einsatzbereit!"
 }

@@ -15,10 +15,8 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.Random;
 
-import static org.mycf.symmetrical.journey.mixins.MixinCropBlock.getAvailableMoisture;
-
 @Mixin(StemBlock.class)
-public class MixinStemBlock extends PlantBlock {
+public class MixinStemBlock extends PlantBlock implements CropBlockInvoker {
     @Shadow @Final public static IntProperty AGE;
 
     @Shadow @Final public static int MAX_AGE;
@@ -30,7 +28,7 @@ public class MixinStemBlock extends PlantBlock {
     @ModifyArgs(method = "Lnet/minecraft/block/StemBlock;randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V",
             at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I"))
     private void newNumberStemBlock(Args args, BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        float f = getAvailableMoisture(this, world, pos);
+        float f = CropBlockInvoker.callGetAvailableMoisture(this, world, pos);
         if (world.isRaining()) {
             f += 5; // Gives raining a nice little boost
         }

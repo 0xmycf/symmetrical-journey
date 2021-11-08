@@ -30,11 +30,11 @@ public abstract class MixinPigEntity extends AnimalEntity implements Angerable {
     }
 
     @Unique
-    private int angerTime;
+    private int symmjour$angerTime;
     @Unique
-    private UUID targetUuid;
+    private UUID symmjour$targetUuid;
     @Unique
-    private static final UniformIntProvider ANGER_TIME_RANGE;
+    private static final UniformIntProvider symmjour$ANGER_TIME_RANGE;
 
     @Inject(method = "Lnet/minecraft/entity/passive/PigEntity;initGoals()V",
             at = @At("TAIL"))
@@ -49,36 +49,36 @@ public abstract class MixinPigEntity extends AnimalEntity implements Angerable {
     @Inject(method = "Lnet/minecraft/entity/passive/PigEntity;createPigAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;",
             at  = @At("TAIL"))
     private static void addGenericDamage(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir){
-        cir.getReturnValue().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2);
+        cir.getReturnValue().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4);
     }
 
     @Override
     public int getAngerTime() {
-        return this.angerTime;
+        return this.symmjour$angerTime;
     }
 
     @Override
     public void setAngerTime(int ticks) {
-        this.angerTime = ticks;
+        this.symmjour$angerTime = ticks;
     }
 
     @Nullable
     @Override
     public UUID getAngryAt() {
-        return this.targetUuid;
+        return this.symmjour$targetUuid;
     }
 
     @Override
     public void setAngryAt(@Nullable UUID uuid) {
-        this.targetUuid = uuid;
+        this.symmjour$targetUuid = uuid;
     }
 
     @Override
     public void chooseRandomAngerTime() {
-        this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
+        this.setAngerTime(symmjour$ANGER_TIME_RANGE.get(this.random));
     }
 
     static {
-        ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
+        symmjour$ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
     }
 }
