@@ -16,12 +16,19 @@ val yarnMappings: String by project
 val loaderVersion: String by project
 val fabricVersion: String by project
 val fabricKotlinVersion: String by project
+val kotlinVersion: String by System.getProperties()
 
 version = modVersion
 group = mavenGroup
 
 minecraft {}
 repositories {}
+
+// dependency: kotlin(a,b) | String
+fun DependencyHandlerScope.includeModApi(dependency: Any) {
+    modApi(dependency)
+    include(dependency)
+}
 
 dependencies {
 
@@ -32,8 +39,17 @@ dependencies {
     // FAPI
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion")
 
-    // Kotlin Language Adapter
-    modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
+    // Kotlin libs
+    includeModApi(kotlin("stdlib", kotlinVersion))
+    includeModApi(kotlin("stdlib-jdk8", kotlinVersion))
+    includeModApi(kotlin("stdlib-jdk7", kotlinVersion))
+    includeModApi(kotlin("reflect", kotlinVersion))
+    includeModApi("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    includeModApi("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2")
+    includeModApi("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.5.2")
+    // something wrong here
+//    includeModApi(kotlin("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.0"))
+//    includeModApi(kotlin("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.3.0"))
 }
 
 tasks {
