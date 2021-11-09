@@ -24,7 +24,6 @@ public abstract class MixinEscapeDangerGoal {
     @Shadow
     protected abstract boolean findTarget();
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     @Inject(method = "Lnet/minecraft/entity/ai/goal/EscapeDangerGoal;canStart()Z",
             at = @At("HEAD"),
             cancellable = true)

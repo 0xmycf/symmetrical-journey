@@ -20,9 +20,10 @@ object SymmetricalJourney : ModInitializer {
 
     override fun onInitialize() {
         EventRegistry
-        FletchingBlockScreenHandlerType = ScreenHandlerRegistry.registerSimple(Identifier(MOD_ID, "screenhandler_fletchingtable")) {i, pi ->
-            FletchingBlockScreenHandler(pi, i)
-        }
+        FletchingBlockScreenHandlerType =
+            ScreenHandlerRegistry.registerSimple(Identifier(MOD_ID, "screenhandler_fletchingtable")) { i, pi ->
+                FletchingBlockScreenHandler(pi, i)
+            }
         ScreenRegistry.register(FletchingBlockScreenHandlerType) { sh, pi, title -> FletchingScreen(sh, pi, title) }
     }
 }
