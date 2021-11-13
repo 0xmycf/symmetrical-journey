@@ -24,7 +24,7 @@ It will only change or add new behaviour to vanilla features.
 - [x] Parrots fear players with Carved Pumpkins as Head and won't eat Wheat, Potatoes, and Carrots if nearby (should work; not tested).
 - [x] Fish only spawn if it is raining.
 - [x] Fish only drop themselves when killed with an Fishing Rod.
-- [x] Fishing Rods can be enchanted with Sharpness (using either a Book or an Enchanting Table).
+- [x] Fishing Rods can be enchanted with Sharpness (with either a Book or an Enchanting Table).
 - [x] Furnaces, Smokers, etc. are dangerous if used to cook food.
 - [ ] Somehow deal with Villager trades.
 - [x] Somehow deal with fishing (probably not done).
@@ -33,7 +33,7 @@ It will only change or add new behaviour to vanilla features.
 - [x] Mooshrooms now attack when being milked for their stew.
 - [ ] Somehow reward better food (stews, golden carrots, etc).
 
-# Licence
+# License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
