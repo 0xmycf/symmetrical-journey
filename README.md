@@ -32,6 +32,7 @@ It will only change or add new behaviour to vanilla features.
 - [x] The Fishing Rod line can be repaired using a string on the Fletching Table.
 - [x] Mooshrooms now attack when being milked for their stew.
 - [ ] Somehow reward better food (stews, golden carrots, etc).
+- [x] Piglins attack the player (between 1-5min) if they've killed a hoglin (See #2) (Thanks to James103) 
 
 # License
 
