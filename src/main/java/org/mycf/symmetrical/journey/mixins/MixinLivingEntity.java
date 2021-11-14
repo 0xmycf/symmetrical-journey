@@ -1,16 +1,13 @@
 package org.mycf.symmetrical.journey.mixins;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.TimeHelper;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.mycf.symmetrical.journey.ducks.PlayerEntityDuck;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -51,27 +48,26 @@ public abstract class MixinLivingEntity extends Entity implements PlayerEntityDu
     }
 
     @Inject(method = "Lnet/minecraft/entity/LivingEntity;tick()V", at = @At("HEAD"))
-    private void tickHoglinTime(CallbackInfo ci){
-        if (symmjour$hasKilledHoglin){
-            if (this.getLastAttackedHoglinTickTime() == this.getHoglinTickTime()){
+    private void tickHoglinTime(CallbackInfo ci) {
+        if (symmjour$hasKilledHoglin) {
+            if (this.getLastAttackedHoglinTickTime() == this.getHoglinTickTime()) {
                 this.setHasKilledHolgin(false);
             } else {
                 this.setLastAttackedHoglinTickTime(this.getLastAttackedHoglinTickTime() + 1);
             }
-            System.out.println(this.getLastAttackedHoglinTickTime());
         }
     }
 
     @Inject(method = "Lnet/minecraft/entity/LivingEntity;writeCustomDataToNbt(Lnet/minecraft/nbt/NbtCompound;)V",
             at = @At("TAIL"))
-    private void saveHoglinTimes(NbtCompound nbt, CallbackInfo ci){
+    private void saveHoglinTimes(NbtCompound nbt, CallbackInfo ci) {
         nbt.putBoolean("symmjour$hasKilledHoglin", this.getHasKilledHolgin());
         nbt.putInt("symmjour$lastAttackedHoglinTickTime", this.getLastAttackedHoglinTickTime());
     }
 
     @Inject(method = "Lnet/minecraft/entity/LivingEntity;readCustomDataFromNbt(Lnet/minecraft/nbt/NbtCompound;)V",
             at = @At("TAIL"))
-    private void getHoglinTimes(NbtCompound nbt, CallbackInfo ci){
+    private void getHoglinTimes(NbtCompound nbt, CallbackInfo ci) {
         this.setHasKilledHolgin(nbt.getBoolean("symmjour$hasKilledHoglin"));
         this.setLastAttackedHoglinTickTime(nbt.getInt("symmjour$lastAttackedHoglinTickTime"));
     }
