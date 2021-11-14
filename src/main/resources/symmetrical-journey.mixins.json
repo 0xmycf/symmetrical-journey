@@ -18,11 +18,14 @@
     "MixinFishEntity",
     "MixinFishingRodItem",
     "MixinFletchingTableBlock",
+    "MixinHoglinEntity",
+    "MixinLivingEntity",
     "MixinLootContext",
     "MixinLootTable",
     "MixinMooshroomEntity",
     "MixinParrotEntity",
     "MixinPigEntity",
+    "MixinPiglinSpecificSensor",
     "MixinRabbitEntity",
     "MixinStemBlock"
   ]
