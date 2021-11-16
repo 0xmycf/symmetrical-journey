@@ -8,14 +8,13 @@ base {
     archivesName.set(archivesBaseName)
 }
 
-val javaVersion = JavaVersion.VERSION_16.toString()
+val javaVersion = JavaVersion.VERSION_17.toString()
 val modVersion: String by project
 val mavenGroup: String by project
 val minecraftVersion: String by project
 val yarnMappings: String by project
 val loaderVersion: String by project
 val fabricVersion: String by project
-val fabricKotlinVersion: String by project
 val kotlinVersion: String by System.getProperties()
 
 version = modVersion
@@ -71,8 +70,8 @@ tasks {
     }
     java {
         toolchain { languageVersion.set(JavaLanguageVersion.of(javaVersion)) }
-        sourceCompatibility = JavaVersion.VERSION_16
-        targetCompatibility = JavaVersion.VERSION_16
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
         withSourcesJar()
     }
 }
