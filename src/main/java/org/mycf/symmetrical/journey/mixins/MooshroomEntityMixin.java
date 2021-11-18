@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MooshroomEntity.class)
-public abstract class MixinMooshroomEntity extends MixinCowEntity {
-    public MixinMooshroomEntity(EntityType<? extends CowEntity> entityType, World world) {
+public abstract class MooshroomEntityMixin extends CowEntityMixin {
+    public MooshroomEntityMixin(EntityType<? extends CowEntity> entityType, World world) {
         super(entityType, world);
     }
 

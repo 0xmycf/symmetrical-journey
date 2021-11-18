@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Mixin(AbstractBlock.class)
-public class MixinAbstractBlock {
+public class AbstractBlockMixin {
 
     @Inject(method = "Lnet/minecraft/block/AbstractBlock;getDroppedStacks(Lnet/minecraft/block/BlockState;Lnet/minecraft/loot/context/LootContext$Builder;)Ljava/util/List;",
             at = @At("HEAD"),

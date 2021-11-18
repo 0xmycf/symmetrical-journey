@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.Map;
 
 @Mixin(LootContext.class)
-public interface MixinLootContext {
+public interface LootContextMixin {
 
     @Accessor("parameters")
     Map<LootContextParameter<?>, Object> getParams();

@@ -8,8 +8,8 @@ import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(FishEntity.class)
-public class MixinFishEntity extends WaterCreatureEntity {
-    protected MixinFishEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
+public class FishEntityMixin extends WaterCreatureEntity {
+    protected FishEntityMixin(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
     }
 

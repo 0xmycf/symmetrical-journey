@@ -16,12 +16,12 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 import java.util.Random;
 
 @Mixin(StemBlock.class)
-public class MixinStemBlock extends PlantBlock implements CropBlockInvoker {
+public class StemBlockMixin extends PlantBlock implements CropBlockInvoker {
     @Shadow @Final public static IntProperty AGE;
 
     @Shadow @Final public static int MAX_AGE;
 
-    protected MixinStemBlock(Settings settings) {
+    protected StemBlockMixin(Settings settings) {
         super(settings);
     }
 

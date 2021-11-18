@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DamageEnchantment.class)
-public class MixinDamageEnchantment {
+public class DamageEnchantmentMixin {
 
     @Shadow @Final public int typeIndex;
 

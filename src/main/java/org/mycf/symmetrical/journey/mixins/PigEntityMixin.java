@@ -24,8 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.UUID;
 
 @Mixin(PigEntity.class)
-public abstract class MixinPigEntity extends AnimalEntity implements Angerable {
-    protected MixinPigEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+public abstract class PigEntityMixin extends AnimalEntity implements Angerable {
+    protected PigEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
     }
 

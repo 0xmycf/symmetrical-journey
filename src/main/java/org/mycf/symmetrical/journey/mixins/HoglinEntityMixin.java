@@ -10,8 +10,8 @@ import org.mycf.symmetrical.journey.ducks.PlayerEntityDuck;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(HoglinEntity.class)
-public abstract class MixinHoglinEntity extends AnimalEntity {
-    protected MixinHoglinEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+public abstract class HoglinEntityMixin extends AnimalEntity {
+    protected HoglinEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
     }
 

@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ParrotEntity.class)
-public abstract class MixinParrotEntity extends TameableShoulderEntity{
-    protected MixinParrotEntity(EntityType<? extends TameableShoulderEntity> entityType, World world) {
+public abstract class ParrotEntityMixin extends TameableShoulderEntity{
+    protected ParrotEntityMixin(EntityType<? extends TameableShoulderEntity> entityType, World world) {
         super(entityType, world);
     }
 

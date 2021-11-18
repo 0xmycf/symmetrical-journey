@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.UUID;
 
 @Mixin(CowEntity.class)
-public abstract class MixinCowEntity extends AnimalEntity implements Angerable {
+public abstract class CowEntityMixin extends AnimalEntity implements Angerable {
 
     @Unique
     private int symmjour$angerTime;
@@ -38,7 +38,7 @@ public abstract class MixinCowEntity extends AnimalEntity implements Angerable {
     private static final UniformIntProvider symmjour$ANGER_TIME_RANGE;
 
 
-    protected MixinCowEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+    protected CowEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
     }
 

@@ -22,8 +22,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(FishingRodItem.class)
-public class MixinFishingRodItem extends Item {
-    public MixinFishingRodItem(Settings settings) {
+public class FishingRodItemMixin extends Item {
+    public FishingRodItemMixin(Settings settings) {
         super(settings);
     }
 

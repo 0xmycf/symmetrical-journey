@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @SuppressWarnings("DuplicatedCode")
 @Mixin(EscapeDangerGoal.class)
-public abstract class MixinEscapeDangerGoal {
+public abstract class EscapeDangerGoalMixin {
 
     @Shadow
     @Final

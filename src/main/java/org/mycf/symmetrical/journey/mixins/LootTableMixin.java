@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 import java.util.function.Consumer;
 
 @Mixin(LootTable.class)
-public class MixinLootTable {
+public class LootTableMixin {
 
 
     @ModifyArgs(
@@ -27,7 +27,7 @@ public class MixinLootTable {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/loot/LootTable;processStacks(Ljava/util/function/Consumer;)Ljava/util/function/Consumer;")
     )
     private void processStacksDifferently(Args args, LootContext context, Consumer<ItemStack> lootConsumer) {
-        var ctx = ((MixinLootContext) (context)).getParams();
+        var ctx = ((LootContextMixin) (context)).getParams();
         var key = ((Entity) ctx.get(LootContextParameters.THIS_ENTITY));
         if (key != null && ModifiedLoot.Companion.getCONFIGURED_MOB_LOOT().containsKey(key.getType())) {
             args.set(0, processStacksCorrectly(lootConsumer, context));
@@ -37,11 +37,11 @@ public class MixinLootTable {
     private static Consumer<ItemStack> processStacksCorrectly(Consumer<ItemStack> lootConsumer, LootContext context) {
         return (stack) -> {
             if (!ModifiedLoot.Companion.isItemIncluded(stack)
-                    || ((MixinLootContext) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL
-                    || (((MixinLootContext) (context)).getParams().get(LootContextParameters.KILLER_ENTITY) instanceof PlayerEntity
-                    && ((PlayerEntity) ((MixinLootContext) (context)).getParams().get(LootContextParameters.KILLER_ENTITY)).getStackInHand(Hand.MAIN_HAND).getItem() == Items.FISHING_ROD
-                        && (((Entity) ((MixinLootContext) (context)).getParams().get(LootContextParameters.THIS_ENTITY)).getType() == EntityType.COD
-                            || ((Entity) ((MixinLootContext) (context)).getParams().get(LootContextParameters.THIS_ENTITY)).getType() == EntityType.SALMON))) {
+                    || ((LootContextMixin) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL
+                    || (((LootContextMixin) (context)).getParams().get(LootContextParameters.KILLER_ENTITY) instanceof PlayerEntity
+                    && ((PlayerEntity) ((LootContextMixin) (context)).getParams().get(LootContextParameters.KILLER_ENTITY)).getStackInHand(Hand.MAIN_HAND).getItem() == Items.FISHING_ROD
+                        && (((Entity) ((LootContextMixin) (context)).getParams().get(LootContextParameters.THIS_ENTITY)).getType() == EntityType.COD
+                            || ((Entity) ((LootContextMixin) (context)).getParams().get(LootContextParameters.THIS_ENTITY)).getType() == EntityType.SALMON))) {
                 if (stack.getCount() < stack.getMaxCount()) {
                     lootConsumer.accept(stack);
                 } else {

@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 import java.util.Random;
 
 @Mixin(CropBlock.class)
-public abstract class MixinCropBlock {
+public abstract class CropBlockMixin {
 
     @Shadow
     protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {

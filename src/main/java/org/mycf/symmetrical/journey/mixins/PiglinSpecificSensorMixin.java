@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(PiglinSpecificSensor.class)
-public class MixinPiglinSpecificSensor {
+public class PiglinSpecificSensorMixin {
 
     // This might lead to compatability issues, I could just inject into the net.minecraft.entity.mob.PiglinBrain.wearsGoldArmor method...
     @Deprecated

@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(RabbitEntity.class)
-public class MixinRabbitEntity {
+public class RabbitEntityMixin {
 
     @ModifyConstant(method = "Lnet/minecraft/entity/passive/RabbitEntity;initGoals()V",
                     constant = @Constant(doubleValue = 2.2D))
