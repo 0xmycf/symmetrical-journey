@@ -25,7 +25,7 @@ repositories {}
 
 // dependency: kotlin(a,b) | String
 fun DependencyHandlerScope.includeModApi(dependency: Any) {
-    modApi(dependency)
+    modImplementation(dependency)
     include(dependency)
 }
 
