@@ -13,14 +13,12 @@ private val Int.d: Double
         return this.toDouble()
     }
 
-object UtilFunctions {
-    fun noGolemNearby(parrot: ParrotEntity, blockPos: BlockPos): Boolean {
-        val box = Box(blockPos).expand(10.d).stretch(0.0, parrot.world.height.d, 0.0)
-        val set = parrot.world.getNonSpectatingEntities(PlayerEntity::class.java, box)
-        val set1 = parrot.world.getNonSpectatingEntities(IronGolemEntity::class.java, box)
-        val set2 = parrot.world.getNonSpectatingEntities(SnowGolemEntity::class.java, box)
-        return set1.isEmpty() && set2.isEmpty() && set.none {
-            it.inventory.armor[3].isOf(Blocks.CARVED_PUMPKIN.asItem())
-        }
+fun noGolemNearby(parrot: ParrotEntity, blockPos: BlockPos): Boolean {
+    val box = Box(blockPos).expand(10.d).stretch(0.0, parrot.world.height.d, 0.0)
+    val set = parrot.world.getNonSpectatingEntities(PlayerEntity::class.java, box)
+    val set1 = parrot.world.getNonSpectatingEntities(IronGolemEntity::class.java, box)
+    val set2 = parrot.world.getNonSpectatingEntities(SnowGolemEntity::class.java, box)
+    return set1.isEmpty() && set2.isEmpty() && set.none {
+        it.inventory.armor[3].isOf(Blocks.CARVED_PUMPKIN.asItem())
     }
 }

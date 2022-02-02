@@ -10,7 +10,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.util.Hand;
-import org.mycf.symmetrical.journey.static_collections.ModifiedLoot;
+import org.mycf.symmetrical.journey.static_collections.ModifiedLootKt;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
@@ -29,14 +29,14 @@ public class LootTableMixin {
     private void processStacksDifferently(Args args, LootContext context, Consumer<ItemStack> lootConsumer) {
         var ctx = ((LootContextMixin) (context)).getParams();
         var key = ((Entity) ctx.get(LootContextParameters.THIS_ENTITY));
-        if (key != null && ModifiedLoot.Companion.getCONFIGURED_MOB_LOOT().containsKey(key.getType())) {
+        if (key != null && ModifiedLootKt.getCONFIGURED_MOB_LOOT().containsKey(key.getType())) {
             args.set(0, processStacksCorrectly(lootConsumer, context));
         }
     }
 
     private static Consumer<ItemStack> processStacksCorrectly(Consumer<ItemStack> lootConsumer, LootContext context) {
         return (stack) -> {
-            if (!ModifiedLoot.Companion.isItemIncluded(stack)
+            if (!ModifiedLootKt.isItemIncluded(stack)
                     || ((LootContextMixin) (context)).getParams().get(LootContextParameters.DAMAGE_SOURCE) == DamageSource.ANVIL
                     || (((LootContextMixin) (context)).getParams().get(LootContextParameters.KILLER_ENTITY) instanceof PlayerEntity
                     && ((PlayerEntity) ((LootContextMixin) (context)).getParams().get(LootContextParameters.KILLER_ENTITY)).getStackInHand(Hand.MAIN_HAND).getItem() == Items.FISHING_ROD

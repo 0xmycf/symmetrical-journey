@@ -103,5 +103,5 @@ public abstract class CowEntityMixin extends AnimalEntity implements Angerable {
 
     static {
         symmjour$ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
-    }
+}
 }

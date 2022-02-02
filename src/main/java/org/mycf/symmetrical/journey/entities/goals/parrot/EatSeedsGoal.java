@@ -8,8 +8,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.WorldView;
-import org.mycf.symmetrical.journey.static_collections.CropBlocks;
-import org.mycf.symmetrical.journey.util.UtilFunctions;
+import org.mycf.symmetrical.journey.static_collections.CropBlocksKt;
+import org.mycf.symmetrical.journey.util.UtilFunctionsKt;
 
 public class EatSeedsGoal extends MoveToTargetPosGoal {
     protected int timer;
@@ -27,12 +27,12 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
     }
 
     public boolean canStart() {
-        return !this.mob.isSleeping() && super.canStart() && noPumpkinNearby() && UtilFunctions.INSTANCE.noGolemNearby((ParrotEntity) this.mob, this.targetPos) && !((ParrotEntity) this.mob).isTamed();
+        return !this.mob.isSleeping() && super.canStart() && noPumpkinNearby() && UtilFunctionsKt.noGolemNearby((ParrotEntity) this.mob, this.targetPos) && !((ParrotEntity) this.mob).isTamed();
     }
 
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
         BlockState blockState = world.getBlockState(pos);
-        return CropBlocks.Companion.getCONFIGURED_BLOCKSSTATES().contains(blockState) && !(blockState.getBlock() == Blocks.BEETROOTS);
+        return CropBlocksKt.getCONFIGURED_BLOCKSTATES().contains(blockState) && !(blockState.getBlock() == Blocks.BEETROOTS);
     }
 
     public void tick() {
@@ -53,7 +53,7 @@ public class EatSeedsGoal extends MoveToTargetPosGoal {
     protected void eatSeedBlock() {
         if (this.mob.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
             BlockState blockState = this.mob.world.getBlockState(this.targetPos);
-            if (CropBlocks.Companion.getCONFIGURED_BLOCKSSTATES().contains(blockState) && !(blockState.getBlock() == Blocks.BEETROOTS)) {
+            if (CropBlocksKt.getCONFIGURED_BLOCKSTATES().contains(blockState) && !(blockState.getBlock() == Blocks.BEETROOTS)) {
                 this.pickSeed(blockState);
             }
         }

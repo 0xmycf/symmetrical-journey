@@ -5,7 +5,7 @@ import net.minecraft.entity.ai.goal.EscapeDangerGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.util.math.BlockPos;
-import org.mycf.symmetrical.journey.util.UtilFunctions;
+import org.mycf.symmetrical.journey.util.UtilFunctionsKt;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -37,7 +37,7 @@ public abstract class EscapeDangerGoalMixin {
                 }
             }
 
-            if (UtilFunctions.INSTANCE.noGolemNearby((ParrotEntity) this.mob, blockPos)) {
+            if (UtilFunctionsKt.noGolemNearby((ParrotEntity) this.mob, blockPos)) {
                 cir.setReturnValue(this.findTarget());
             }
         }

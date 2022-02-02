@@ -6,11 +6,11 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "AbstractFurnaceBlockEntityAccessor",
-    "CropBlockInvoker",
     "AbstractBlockMixin",
+    "AbstractFurnaceBlockEntityAccessor",
     "AbstractFurnaceBlockEntityMixin",
     "CowEntityMixin",
+    "CropBlockInvoker",
     "CropBlockMixin",
     "DamageEnchantmentMixin",
     "EnchantmentHelperMixin",
@@ -25,6 +25,7 @@
     "MooshroomEntityMixin",
     "ParrotEntityMixin",
     "PigEntityMixin",
+    "PiglinBrainMixin",
     "PiglinSpecificSensorMixin",
     "RabbitEntityMixin",
     "StemBlockMixin"
